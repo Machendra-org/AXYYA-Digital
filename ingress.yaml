@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: axyyadigital-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: axyyadigital
+  rules:
+  - http:
+    paths:
+    - path: /*
+      pathType: Prefix
+      backend:
+        service:
+          name: my-service
+          port:
+            number: 3000
